@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+    <BaseOutputPath>D:\Program Source\Aquacore</BaseOutputPath>
+    <Authors>aquamarine5</Authors>
+    <Company>aquamarine5</Company>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.2211</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Huanent.Logging.File" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Aquc.AquaUpdater\Aquc.AquaUpdater\Aquc.AquaUpdater\Aquc.AquaUpdater.csproj" />
+    <ProjectReference Include="..\..\Aquc.Configuration\Aquc.Configuration\Aquc.Configuration.csproj" />
+    <ProjectReference Include="..\..\Aquc.Netdisk\Aquc.Netdisk.Smms\Aquc.Netdisk.Smms.csproj" />
+  </ItemGroup>
+
+</Project>
