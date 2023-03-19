@@ -9,6 +9,8 @@ using Aquc.Netdisk.Smms;
 using Aquc.AquaUpdater;
 using System.Reflection;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging.Console;
+using Huanent.Logging.File;
 
 namespace Aquc.Projram.Seeker;
 
@@ -21,6 +23,9 @@ public class Program
             .ConfigureLogging(service =>
             {
                 service.ClearProviders();
+
+                service.AddFilter<ConsoleLoggerProvider>(level => level >= LogLevel.Debug);
+                service.AddFilter<FileLoggerProvider>(level => level >= LogLevel.Debug);
                 service.AddConsole();
                 service.AddFile();
             })
@@ -67,8 +72,8 @@ public class Program
             flow.Data.DirectoryInfos.Add(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
             _logger?.LogInformation("Success add desktop directory.");
             // fix
-            _ = new Launch();
-            SubscriptionController.RegisterSubscription(new SubscribeOption
+            //_ = new Launch();
+            host.Services.GetRequiredService<UpdaterService>().RegisterSubscription(new SubscribeOption
             {
                 Args = "224377738",
                 Provider = "bilibilimsgpvder",
@@ -77,13 +82,13 @@ public class Program
                 Program = Environment.ProcessPath,
                 Version = Assembly.GetExecutingAssembly().GetName().Version!.ToString()
             });
-            Launch.UpdateLaunchConfig();
+            //Launch.UpdateLaunchConfig();
         });
         addCommand.SetHandler(handler =>
         {
             using var flow = config.GetFlow();
             flow.Data.DirectoryInfos.Add(handler.FullName);
-            _logger?.LogInformation("Success add directory: {dir}",handler.FullName);
+            _logger?.LogInformation("Success add a new directory: {dir}",handler.FullName);
         }, dirArgument);
         seekCommand.SetHandler(async() =>
         {
@@ -94,24 +99,28 @@ public class Program
                 if(dir==null)continue;
                 SeekDirectory(0, new(dir), images);
             }
-            _logger?.LogInformation("Seeked {n} images.", images.Count);
             var a = images.Where((fileinfo) => { return !existed.Contains(fileinfo.Name); });
-            _logger?.LogInformation("Upload {n} images.", a.Count());
+            _logger?.LogInformation("Seeker {sn} images, Uploaded {n}",images.Count, a.Count());
             using var i = config.GetFlow();
             await foreach (var result in UploadImage(a))
             {
                 if (!string.IsNullOrEmpty(result))
                 {
-                    _logger?.LogInformation("Success upload file: {f}", result);
+                    _logger?.LogDebug("Success upload file: {f}", result);
                     i.Data.UploaderImageName.Add(result);
                 }
                 else
-                {
                     _logger?.LogWarning("Failed to upload file: {f}", result);
-                }
             }
         });
-        await root.InvokeAsync(args);
+        try
+        {
+            await root.InvokeAsync(args);
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError("{ex} {msg}", ex.Message, ex.StackTrace);
+        }
     }
     private static async IAsyncEnumerable<string> UploadImage(IEnumerable<FileInfo> f)
     {

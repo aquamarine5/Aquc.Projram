@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+    <DebugType>embedded</DebugType>
+    <SatelliteResourceLanguages>zh-hans;en-us</SatelliteResourceLanguages>
     <BaseOutputPath>D:\Program Source\Aquacore</BaseOutputPath>
     <Authors>aquamarine5</Authors>
     <Company>aquamarine5</Company>
