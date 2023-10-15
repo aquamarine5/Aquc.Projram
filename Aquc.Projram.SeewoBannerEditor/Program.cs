@@ -2,6 +2,7 @@
 using Serilog.Core;
 using Serilog;
 using Serilog.Events;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 public class EditorProgram
 {
@@ -40,9 +41,17 @@ public class EditorProgram
     }).Invoke();
     private static void Main(string[] args)
     {
+        var program = new EditorProgram();
         
+
+        if (args.Length == 1)
+        {
+            if (args[0] == "default") program.ChangeDefaultBannerImage();
+            else if (args[0] == "edit") program.ChangeBannerImage();
+            else if (args[0] == "admin") program.SetSecurity();
+        }
     }
-    public string GetSeewoBannerPath()
+    public string GetSeewoPath()
     {
         var wow6432Node=Registry.LocalMachine.OpenSubKey("SOFTWARE")?.OpenSubKey("WOW6432Node")!;
         var seewoNode = wow6432Node.OpenSubKey("Seewo")?.OpenSubKey("EasiNote5");
@@ -52,7 +61,49 @@ public class EditorProgram
         }
         else
         {
-            return seewoNode.GetValue("ActualExePath")!.ToString()!;
+            return Path.GetDirectoryName(seewoNode.GetValue("ActualExePath")!.ToString()!)!;
         }
+    }
+    public string GetSeewoBannerImagePath()
+    {
+        return Path.Combine(GetSeewoPath(), "Assets", "SplashScreen.png");
+    }
+    public void SetSecurity()
+    {
+        var f = new FileInfo(GetSeewoBannerImagePath());
+        var fs=f.GetAccessControl();
+        fs.SetAccessRule(new System.Security.AccessControl.FileSystemAccessRule("Users", System.Security.AccessControl.FileSystemRights.FullControl, System.Security.AccessControl.AccessControlType.Allow));
+        f.SetAccessControl(fs);
+    }
+    public void SetReadonly()
+    {
+        File.SetAttributes(GetSeewoBannerImagePath(), FileAttributes.ReadOnly);
+    }
+    public void RemoveReadonly()
+    {
+        File.SetAttributes(GetSeewoBannerImagePath(), FileAttributes.Normal);
+    }
+    public void ChangeBannerImage()
+    {
+        //SetSecurity();
+        RemoveReadonly();
+        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "EditedSplashBanner.png"), GetSeewoBannerImagePath(),true);
+        SetReadonly();
+
+
+        new ToastContentBuilder()
+            .AddText($"Windows 将会在稍后将 {{E599723E-0D17-4EFC-87F8-F05D72B1FBFE}} 添加到您的计算机上，此过程需要一段时间。")
+            .Show();
+    }
+    public void ChangeDefaultBannerImage()
+    {
+
+        //SetSecurity();
+        RemoveReadonly();
+        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "DefaultSplashBanner.png"), GetSeewoBannerImagePath(), true);
+        SetReadonly();
+        new ToastContentBuilder()
+            .AddText($"{{E599723E-0D17-4EFC-87F8-F05D72B1FBFE}} 已经被安装至您的计算机上。")
+            .Show();
     }
 }

@@ -1,0 +1,35 @@
+{
+  "ConfigVersion": 1,
+  "StackbricksManifest": {
+    "Version": "3.1.729.0",
+    "ProgramDir": ".",
+    "Id": "Aquc.Stackbricks",
+    "MsgPvderId": "stbks.msgpvder.weibocmts",
+    "MsgPvderData": "4927489886915247",
+    "LastCheckTime": null,
+    "LastUpdateTime": null,
+    "UpdateActions": [
+      {
+        "Id": "stbks.action.applyselfupdate",
+        "Args": [],
+        "Flags": []
+      }
+    ]
+  },
+  "ProgramManifest": {
+    "Version": "2.0.1015.0",
+    "ProgramDir": ".",
+    "Id": "Aquc.Projram",
+    "MsgPvderId": "stbks.msgpvder.weibocmts",
+    "MsgPvderData": "4957127007273750",
+    "LastCheckTime": null,
+    "LastUpdateTime": null,
+    "UpdateActions": [
+      {
+        "Id": "stbks.action.replaceall",
+        "Args": [],
+        "Flags": []
+      }
+    ]
+  }
+}
