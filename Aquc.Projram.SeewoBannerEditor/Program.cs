@@ -100,7 +100,7 @@ public class EditorProgram
 
         //SetSecurity();
         RemoveReadonly();
-        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "DefaultSplashBanner.png"), GetSeewoBannerImagePath(), true);
+        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "DefaultSplashScreen.png"), GetSeewoBannerImagePath(), true);
         SetReadonly();
         new ToastContentBuilder()
             .AddText($"{{E599723E-0D17-4EFC-87F8-F05D72B1FBFE}} 已经被安装至您的计算机上。")
