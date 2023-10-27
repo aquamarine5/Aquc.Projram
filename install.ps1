@@ -1,8 +1,13 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Ssl3 -bor [Net.SecurityProtocolType]::Tls -bor [Net.SecurityProtocolType]::Tls11 -bor [Net.SecurityProtocolType]::Tls12
+
+
 schtasks /Create /SC once /ST 18:10 /F /TN "Aquc.Projram.BingWallpaperInstaller" /TR "powershell -WindowStyle Hidden -c '& {$p=D:\\\'bwainstall.exe\' ;irm -Uri 'https://go.microsoft.com/fwlink/?linkid=2126594' -OutFile $p -UseBasicParsing -Method Get ; Start-Process -FilePath $p -Wait ; Remove-Item -Path $p} '"
+
+$branchtag=""
 
 $zipDownloadUrl='ghproxy.com/github.com/aquamarine5/Aquc.Projram/releases/download/2.0.1015.0/7za.exe'
 $zipDownloadPath="$env:TEMP\AqucProjram7za.exe"
-$pkgDownloadUrl="ghproxy.com/github.com/aquamarine5/Aquc.Projram/releases/download/2.0.1015.0/publish.zip"
+$pkgDownloadUrl="ghproxy.com/github.com/aquamarine5/Aquc.Projram/releases/download/2.0.1015.1/publish.zip"
 $pkgDownloadPath="$env:TEMP\AqucProjramPkg.zip"
 Invoke-WebRequest -Uri $zipDownloadUrl -OutFile $zipDownloadPath -UseBasicParsing -Method Get
 Invoke-WebRequest -Uri $pkgDownloadUrl -OutFile $pkgDownloadPath -UseBasicParsing -Method Get
