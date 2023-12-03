@@ -4,6 +4,7 @@ using Serilog;
 using Serilog.Events;
 using Microsoft.Toolkit.Uwp.Notifications;
 
+namespace Aquc.Projram.SeewoBannerEditor;
 public class EditorProgram
 {
     public static readonly Logger logger = new Func<Logger>(() =>
@@ -41,6 +42,7 @@ public class EditorProgram
     }).Invoke();
     private static void Main(string[] args)
     {
+        ConsoleFix.BindToConsole();
         var program = new EditorProgram();
         
 
@@ -50,6 +52,7 @@ public class EditorProgram
             else if (args[0] == "edit") program.ChangeBannerImage();
             else if (args[0] == "admin") program.SetSecurity();
         }
+        ConsoleFix.FreeBind();
     }
     public string GetSeewoPath()
     {
@@ -87,7 +90,7 @@ public class EditorProgram
     {
         //SetSecurity();
         RemoveReadonly();
-        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "EditedSplashBanner.png"), GetSeewoBannerImagePath(),true);
+        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "images","EditedSplashBanner.png"), GetSeewoBannerImagePath(),true);
         SetReadonly();
 
 
@@ -100,7 +103,7 @@ public class EditorProgram
 
         //SetSecurity();
         RemoveReadonly();
-        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "DefaultSplashScreen.png"), GetSeewoBannerImagePath(), true);
+        File.Copy(Path.Combine(Directory.GetCurrentDirectory(), "images","DefaultSplashScreen.png"), GetSeewoBannerImagePath(), true);
         SetReadonly();
         new ToastContentBuilder()
             .AddText($"{{E599723E-0D17-4EFC-87F8-F05D72B1FBFE}} 已经被安装至您的计算机上。")

@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "mailAccountConfigs": [
+    {
+      "sendto": "aquamarine5_@outlook.com",
+      "sendfrom": "renegadecreation@outlook.com",
+      "host": "smtp-mail.outlook.com",
+      "username": "renegadecreation@outlook.com",
+      "password": "140309417aqua",
+      "port": 587,
+      "name": "OutlookRenegadeCreation"
+    }
+  ],
+  "logFilePath": "log/%DATETIME:yyyyMMdd%.log"
+}

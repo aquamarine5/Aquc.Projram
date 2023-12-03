@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.Projram.SeewoBannerEdi
 		{BF4A6509-929B-4EFF-8170-45C63F04AC94} = {BF4A6509-929B-4EFF-8170-45C63F04AC94}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.Projram.BingWallpaperInstaller", "Aquc.Projram.BingWallpaperInstaller\Aquc.Projram.BingWallpaperInstaller.csproj", "{854D87BC-C2E0-4A37-BD36-C90FFDE2B304}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.Stackbricks", "..\Aquc.Stackbricks\Aquc.Stackbricks\Aquc.Stackbricks.csproj", "{BF4A6509-929B-4EFF-8170-45C63F04AC94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{9D3A2201-ECB3-4165-9FCB-023F6B8CD4B6}"
@@ -22,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.Stackbricks.DataClass"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.BiliCommits", "..\Aquc.Stackbricks\Aquc.BiliCommits\Aquc.BiliCommits\Aquc.BiliCommits.csproj", "{C4889CD9-69D0-4E4E-A392-461844D64F26}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aquc.Logging", "..\Aquc.Logging\Aquc.Logging\Aquc.Logging.csproj", "{4CDF04B7-F8E2-4DA0-B826-7CC9126D82ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +32,6 @@ Global
 		{B1989924-2CE8-43A1-940C-D5E4EBBE7E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1989924-2CE8-43A1-940C-D5E4EBBE7E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1989924-2CE8-43A1-940C-D5E4EBBE7E43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{854D87BC-C2E0-4A37-BD36-C90FFDE2B304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{854D87BC-C2E0-4A37-BD36-C90FFDE2B304}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{854D87BC-C2E0-4A37-BD36-C90FFDE2B304}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{854D87BC-C2E0-4A37-BD36-C90FFDE2B304}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF4A6509-929B-4EFF-8170-45C63F04AC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF4A6509-929B-4EFF-8170-45C63F04AC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF4A6509-929B-4EFF-8170-45C63F04AC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,6 +44,10 @@ Global
 		{C4889CD9-69D0-4E4E-A392-461844D64F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4889CD9-69D0-4E4E-A392-461844D64F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4889CD9-69D0-4E4E-A392-461844D64F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CDF04B7-F8E2-4DA0-B826-7CC9126D82ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDF04B7-F8E2-4DA0-B826-7CC9126D82ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDF04B7-F8E2-4DA0-B826-7CC9126D82ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDF04B7-F8E2-4DA0-B826-7CC9126D82ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

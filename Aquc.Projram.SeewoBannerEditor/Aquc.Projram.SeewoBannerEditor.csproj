@@ -7,10 +7,15 @@
     <Nullable>enable</Nullable>
     <DebugType>embedded</DebugType>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-
+    <OutputPath>D:\ProgramSource\Aquc.Projram</OutputPath>
     <SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
-    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="ConsoleFix.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
 
   <ItemGroup>
 
@@ -26,15 +31,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Aquc.Stackbricks.config.json">
+    <Page Include="Aquc.Stackbricks.config.json" />
+    <Resource Include="Aquc.Logging.manifest.json" />
+    <None Include="images\DefaultSplashScreen.png" />
+    <None Include="images\EditedSplashBanner.png" />
+    <None Include="images\EditedSplashBannerMenjiang.png" />
+    <None Include="setup.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="images\EditedSplashBanner.png">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Update="Aquc.Logging.manifest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="images\DefaultSplashScreen.png">
+    </Resource>
+    <Resource Update="Aquc.Stackbricks.config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Resource>
+    <Resource Update="images\EditedSplashBanner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Update="images\DefaultSplashScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
